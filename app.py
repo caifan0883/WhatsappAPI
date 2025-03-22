@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import json
@@ -59,10 +59,18 @@ def webhook():
 
 
 def verificar_token(req):
-    return 0
+    token = req.args.get('hub.verify_token')
+    challenge = req.args.get('hub.challenge')
+
+    if challenge and token == TOKE_WHATSAPP_API:
+        return challenge
+    else:
+        return jsonify({'error' :'token invalido '}),401
 
 def recibir_mensajes(req):
-    return 0
+    agregar_mensajes_log(req)
+    return jsonify({'message': 'EVENT_RECEIVED'})
+
 
 if (__name__)=='__main__':
     app.run(host='0.0.0.0',port=80,debug=True)
