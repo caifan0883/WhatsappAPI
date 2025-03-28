@@ -44,7 +44,7 @@ def agregar_mensajes_log(texto):
     db.session.commit()
 
 #Token de verificacion para la configuracion
-TOKEN_ANDERCODE = "ANDERCODE"
+TOKEN_WHATSAPP = "PCU"
 
 @app.route('/webhook', methods=['GET','POST'])
 def webhook():
@@ -59,7 +59,7 @@ def verificar_token(req):
     token = req.args.get('hub.verify_token')
     challenge = req.args.get('hub.challenge')
 
-    if challenge and token == TOKEN_ANDERCODE:
+    if challenge and token == TOKEN_WHATSAPP:
         return challenge
     else:
         return jsonify({'error':'Token Invalido'}),401
