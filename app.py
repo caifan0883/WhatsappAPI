@@ -369,13 +369,13 @@ def enviar_mensajes_whatsapp(texto,number):
 
     headers = {
         "Content-Type" : "application/json",
-        "Authorization" : "Bearer EAAM1QqlQV90BO2QbeOuwedmZAgbAHfCnZBUmQsjP3phs4UEK2fRuYGbZBH7B8nEz3QhV4wt4NEhgfZCvUOQCxZAeNGnaZBBfmMA4ipeMiPD43d2gvxzMrebJm3hilKHcYwOCxZCZCcxJau1wrgugRGehuzs8ZC7jCHzr9lluJvcfUAiYwK5IuQGG7rd4Bz6MoZB902TGkIYdVZBEB1XGzfCOS1HxKccJiv4YLdGcUYZD"
+        "Authorization" : "Bearer EAAkgJjb2IGQBO2vZA2eYZBRzF0bsFPRC5Y5N5RWexC2hFpB5laZAGUPWXE70ZBF1ucV1tTyDzvkFtfstxaI4S5JExF3MZCV9VPUZCJKQEW6Q0RadeG23P0plX4gY1ZA2RkiLZBcO0czbHaLTEE7GZBCXf1nqmXRoW1rjrGkQTGDnkHFKuTWzhsqx9AuCpIMTeE3yjyom8FWq4x6T4dqdRDSVFvhPJ"
     }
 
     connection = http.client.HTTPSConnection("graph.facebook.com")
 
     try:
-        connection.request("POST","/v18.0/117721278011867/messages", data, headers)
+        connection.request("POST","/v22.0/608928338963212/messages", data, headers)
         response = connection.getresponse()
         print(response.status, response.reason)
     except Exception as e:
