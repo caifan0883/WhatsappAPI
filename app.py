@@ -44,7 +44,7 @@ def agregar_mensajes_log(texto):
     db.session.commit()
 
 #Token de verificacion para la configuracion
-TOKEN_WHATSAPP = "PCU"
+TOKEN_ANDERCODE = "ANDERCODE"
 
 @app.route('/webhook', methods=['GET','POST'])
 def webhook():
@@ -59,7 +59,7 @@ def verificar_token(req):
     token = req.args.get('hub.verify_token')
     challenge = req.args.get('hub.challenge')
 
-    if challenge and token == TOKEN_WHATSAPP:
+    if challenge and token == TOKEN_ANDERCODE:
         return challenge
     else:
         return jsonify({'error':'Token Invalido'}),401
@@ -369,7 +369,7 @@ def enviar_mensajes_whatsapp(texto,number):
 
     headers = {
         "Content-Type" : "application/json",
-        "Authorization" : "Bearer EAAkgJjb2IGQBOwCAqp7oYNWsWLqGYOTZAKRl6IeqcGXjLbGCWLTgzD6ZA9ps4eVSQm9TZA366KDmKCZBh7KnpXmb2TmYU197bmR8NVhXwLlbZAJC66Hm7sjD1wZAdQZARxAd8I3izW34muqL5DUDgL0vSTYZAjU0G5MFs9wZAiMxLpPnjEHg30ZCEzRT39EzERallnTtSieuD8DcpGZBixLzEdUfkUo"
+        "Authorization" : "Bearer EAAM1QqlQV90BO2QbeOuwedmZAgbAHfCnZBUmQsjP3phs4UEK2fRuYGbZBH7B8nEz3QhV4wt4NEhgfZCvUOQCxZAeNGnaZBBfmMA4ipeMiPD43d2gvxzMrebJm3hilKHcYwOCxZCZCcxJau1wrgugRGehuzs8ZC7jCHzr9lluJvcfUAiYwK5IuQGG7rd4Bz6MoZB902TGkIYdVZBEB1XGzfCOS1HxKccJiv4YLdGcUYZD"
     }
 
     connection = http.client.HTTPSConnection("graph.facebook.com")
